@@ -18,15 +18,4 @@ sf.gov:
 e.g. sf.gov: FAQs (Frequently Asked Questions)
 Search sf.gov for that term
 
-Example session:
-Question: What is the capital of France?
-Thought: I should look up France on Wikipedia
-Action: wikipedia: France
-PAUSE
-
-You will be called again with this:
-Observation: France is a country. The capital is Paris.
-
-You then output:
-Answer: The capital of France is Paris
 """.strip()
