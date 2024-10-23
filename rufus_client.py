@@ -1,26 +1,23 @@
 import json
 
+from utils.scraper import Scraper
+from utils.nlp_processor import extract_keywords
 from utils.error_handler import handle_error
-from utils.scraper import (extract_relevant_data, fetch_dynamic_content,
-                           fetch_page_content)
 
 
 class RufusClient:
-    def __init__(self,api_key):
-        self.api = api_key
+
+    def __init__(self, api_key=None, use_selenium=False):
+         
+        self.api_key = api_key
+        self.scraper = Scraper(use_selenium=use_selenium)
+
+    def scrape(self, url: str, instructions: str = "Scrape relevant data"):
         
-    def scrape(self,url,instructions,use_selenium=False):
-        try:
-            if use_selenium:
-                content = fetch_dynamic_content(url)
-            else:
-                content = fetch_page_content(url)
-                
-            if content:
-                return extract_relevant_data(content,instructions)
-            return None
-        except Exception as e:
-            handle_error(e)
-            
-    def get_results(self,results):
-        return json.dumps(results,indent = 4)
+        # Extract keywords from instructions (you can enhance this part)
+        keywords = extract_keywords(instructions)
+
+        # Use the Scraper class to perform the actual scraping
+        scraped_data = self.scraper.scrape(url, keywords)
+        return scraped_data
+   

@@ -6,7 +6,7 @@ from rufus_client import RufusClient
 
 app = FastAPI()
 
-key = '52ee7f89ed16b07e49bc8422ed8a36ee99ccbc640caf294dcc58d60f12e3bccd'
+key = 'your-api-key'
 client = RufusClient(api_key=key)
 
 @app.post('/scrape/')
@@ -23,3 +23,4 @@ def scrape_website(request: ScrapeRequest):
 @app.get("/")
 def root():
     return {"message": "Welcome to the Rufus AI Agent API!"}
+
