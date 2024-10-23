@@ -14,7 +14,6 @@ class RufusClient:
 
     def scrape(self, url: str, instructions: str = "Scrape relevant data"):
         
-        # Extract keywords from instructions 
         keywords = extract_keywords(instructions)
 
         # Use the Scraper class to perform the actual scraping
